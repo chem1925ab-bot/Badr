@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b5d3b"><link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png"><title>badr — السلامة والصحة المهنية</title>
+<style>
+:root{--g:#0b5d3b;--bg:#f4f6f5;--c0:#2e9e4f;--c1:#f2c200;--c2:#f08a1c;--c3:#d62f2f}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,"Segoe UI",Arial,sans-serif;background:var(--bg);color:#1b1f1d;padding-bottom:84px;line-height:1.6}
+header{background:var(--g);color:#fff;padding:14px 16px;padding-top:max(14px,env(safe-area-inset-top));font-weight:700;position:sticky;top:0;z-index:5}
+main{padding:12px;max-width:900px;margin:auto}h3{margin:14px 0 6px}
+.card{background:#fff;border-radius:12px;padding:12px;margin:10px 0;border:1px solid #dde3df}
+button{min-height:46px;padding:0 16px;border:0;border-radius:10px;background:var(--g);color:#fff;font:inherit;font-size:16px;margin:3px 0}
+.b2{background:#e3e8e5;color:#222}.bd{background:var(--c3)}
+input,select,textarea{width:100%;min-height:46px;padding:8px;margin:4px 0 10px;border:1px solid #b9c2bd;border-radius:8px;font:inherit;font-size:16px;background:#fff}
+label{font-size:14px;color:#444}small{color:#555}
+nav{position:fixed;bottom:0;inset-inline:0;display:flex;background:#fff;border-top:1px solid #ccc;padding-bottom:env(safe-area-inset-bottom);z-index:6}
+nav button{flex:1;background:none;color:#555;font-size:11px;min-height:62px;padding:0 2px;margin:0;border-radius:0}nav .on{color:var(--g);font-weight:700;border-top:3px solid var(--g)}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;color:#fff;font-size:13px;margin:2px 0}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.row>*{flex:1}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.kpi{background:#fff;border:1px solid #dde3df;border-radius:12px;padding:10px;text-align:center;font-size:14px}.kpi b{display:block;font-size:22px;color:var(--g)}
+#ov{position:fixed;inset:0;background:#0008;display:none;z-index:9;overflow:auto}#ov>div{background:#fff;margin:16px auto;max-width:600px;padding:14px;border-radius:12px;width:calc(100% - 24px)}
+@media print{nav,header,button,input,select,.np{display:none!important}body{padding:0}}
+</style></head><body>
+<header>🦺 badr — السلامة والصحة المهنية والبيئة</header><main></main><nav></nav><div id="ov"><div></div></div>
+<script>
+const $=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const base=()=>({lib:[
+{t:'ISO 45001:2018 — نظم إدارة السلامة والصحة المهنية',ty:'معيار',r:'ISO'},
+{t:'ISO 31000 — إدارة المخاطر',ty:'معيار',r:'ISO'},
+{t:'ISO 39001 — نظم إدارة سلامة المرور على الطرق',ty:'معيار',r:'ISO'},
+{t:'OSHA 29 CFR 1910 — الصناعة العامة',ty:'قانون/لائحة',r:'OSHA'},
+{t:'OSHA 29 CFR 1926 — أعمال الإنشاءات',ty:'قانون/لائحة',r:'OSHA'},
+{t:'NEBOSH — الشهادة العامة الدولية (IGC)',ty:'كتاب',r:'NEBOSH'},
+{t:'قانون العمل المصري — أحكام السلامة والصحة المهنية',ty:'قانون/لائحة',r:'تحقق من الإصدار الساري'},
+{t:'دليل HSE — الهيئة العامة المصرية للبترول (EGPC)',ty:'دليل',r:'أضف رقم الإصدار والملخص من نسختك الرسمية'}],
+risk:[],stats:[],trip:[],ptw:[],chk:[],tbt:[],capa:[],plans:{},
+nums:[{n:'الشرطة',v:'122'},{n:'الإسعاف',v:'123'},{n:'الإطفاء (الحماية المدنية)',v:'180'}],
+cfg:{b1:1000000,b2:200000,bands:[6,12,20],acc:1}});
+let D=Object.assign(base(),JSON.parse(localStorage.getItem('badr')||'{}'));
+const save=()=>localStorage.setItem('badr',JSON.stringify(D));
+const N5=[1,2,3,4,5,6],LL=['','نادر جداً','نادر','غير محتمل','ممكن','محتمل','شبه مؤكد'],SL=['','طفيفة','بسيطة','متوسطة','كبيرة','جسيمة','كارثية'];
+const WORK=['العمل الساخن','العمل على ارتفاعات','الأماكن المغلقة','الكهرباء','المولدات والمضخات','أعمال المعادن','المناولة والرفع','المواد الكيميائية','الحفر','الرفع بالأوناش','أخرى'];
+const CTRL=['1 - إزالة الخطر','2 - الاستبدال','3 - ضوابط هندسية','4 - ضوابط إدارية','5 - معدات الوقاية الشخصية'];
+const M={
+lib:{n:'مرجع',f:[['t','العنوان'],['ty','النوع','s',['معيار','قانون/لائحة','دليل','كتاب','إجراء','أخرى']],['r','الجهة / الإصدار'],['sum','ملخص / ملاحظاتك','a']]},
+risk:{n:'تقييم خطر',f:[['w','نوع العمل','s',WORK],['h','الخطر / النشاط'],['l0','الاحتمالية قبل الضوابط','n5',LL],['s0','الشدة قبل الضوابط','n5',SL],['c','الضوابط المطبّقة / المقترحة','a'],['cl','أعلى مستوى في هرم التحكم','s',CTRL],['l1','الاحتمالية بعد الضوابط','n5',LL],['s1','الشدة بعد الضوابط','n5',SL],['o','المسؤول']]},
+stats:{n:'سجل شهري',f:[['m','الشهر','m'],['w','عدد العاملين','n'],['hr','ساعات الوردية','n'],['d','أيام العمل','n'],['mh','ساعات العمل الفعلية (اختياري — تُحسب تلقائياً إن تُركت فارغة)','n'],['lti','إصابات مضيّعة للوقت','n'],['ld','أيام العمل الضائعة','n'],['rec','حوادث مسجلة','n'],['nm','حوادث وشيكة','n'],['fa','إسعافات أولية','n'],['vio','مخالفات','n'],['no','ملاحظات','a']]},
+ptw:{n:'تصريح عمل',f:[['no','رقم التصريح'],['ty','نوع العمل','s',WORK],['loc','الموقع'],['is','مُصدر التصريح'],['rc','المستلم'],['fr','من','dt'],['to','إلى','dt'],['st','الحالة','s',['مفتوح','مغلق','ملغي']],['gas','نتيجة اختبار الغازات / القياسات'],['iso','العزل (LOTO) ومعدات الوقاية','a'],['pr','الاحتياطات والملاحظات','a'],['cls','إغلاق التصريح (التاريخ / الاسم)']]},
+tbt:{n:'نشرة يومية',f:[['d','التاريخ','d'],['t','الموضوع'],['by','المقدّم'],['c','عدد الحضور','n'],['no','النقاط الرئيسية','a']]},
+capa:{n:'إجراء تصحيحي',f:[['src','المصدر (حادث/تفتيش/مراجعة)'],['ds','وصف عدم المطابقة','a'],['ac','الإجراء التصحيحي/الوقائي','a'],['rs','المسؤول'],['du','تاريخ الاستحقاق','d'],['st','الحالة','s',['مفتوح','قيد التنفيذ','مغلق']]]},
+trip:{n:'رحلة',f:[['no','رقم الرحلة'],['d','التاريخ','d'],['pl','رقم المركبة'],['dr','السائق'],['fr','من (موقع)'],['to','إلى (موقع)'],['pu','الغرض'],['pa','عدد الركاب','n'],['t0','وقت المغادرة','dt'],['t1','الوصول المتوقع','dt'],['t2','الوصول الفعلي','dt'],['o0','عداد البداية (كم)','n'],['o1','عداد النهاية (كم)','n'],['rk','تقييم مخاطر الرحلة','s',['منخفض','متوسط','مرتفع']],['ft','لياقة السائق (راحة كافية / بلا إرهاق)','s',['تم التحقق','لم يتم']],['ap','معتمد الرحلة'],['st','الحالة','s',['مخطط','جارٍ','مكتمل','ملغي']],['nt','ملاحظات / حوادث وشيكة','a']]}};
+const B=['منخفض','متوسط','مرتفع','حرج'],lv=s=>{const b=D.cfg.bands;return s<=b[0]?0:s<=b[1]?1:s<=b[2]?2:3};
+const bd=(l,s)=>`<span class="badge" style="background:var(--c${lv(s)});color:${lv(s)==1?'#000':'#fff'}">${l}: ${s} (${B[lv(s)]})</span> `;
+const T5={d:'date',dt:'datetime-local',m:'month',n:'number'};
+function inp([k,l,t,o],v){let h=`<label>${l}</label>`;
+if(t=='s')h+=`<select name="${k}">${o.map(x=>`<option ${x==v?'selected':''}>${x}</option>`).join('')}</select>`;
+else if(t=='n5')h+=`<select name="${k}">${N5.map(x=>`<option value="${x}" ${x==v?'selected':''}>${x} - ${o[x]}</option>`).join('')}</select>`;
+else if(t=='a')h+=`<textarea name="${k}" rows="3">${E(v)}</textarea>`;
+else h+=`<input name="${k}" type="${T5[t]||'text'}" step="any" value="${E(v)}">`;return h}
+function edit(k,i){const r=i>=0?D[k][i]:{};$('#ov').style.display='block';$('#ov>div').innerHTML=`<h3>${M[k].n}</h3>`+M[k].f.map(f=>inp(f,r[f[0]])).join('')+`<div class="row"><button onclick="sv('${k}',${i})">حفظ</button><button class="b2" onclick="cl()">إلغاء</button></div>`}
+const cl=()=>$('#ov').style.display='none';
+function sv(k,i){const o={};document.querySelectorAll('#ov [name]').forEach(e=>o[e.name]=e.value);i>=0?D[k][i]=o:D[k].push(o);save();cl();go()}
+function del(k,i){if(confirm('حذف السجل؟')){D[k].splice(i,1);save();go()}}
+const fl=v=>document.querySelectorAll('.it').forEach(e=>e.hidden=!e.textContent.includes(v));
+function list(k,x){return `<div class="row np"><button onclick="edit('${k}',-1)">+ إضافة</button><button class="b2" onclick="csv('${k}')">تصدير CSV</button><button class="b2" onclick="print()">طباعة</button></div><input placeholder="بحث..." oninput="fl(this.value)">`+
+D[k].map((r,i)=>`<div class="card it">${x?x(r):''}${M[k].f.map(f=>r[f[0]]?`<div><small>${f[1].split(' (')[0]}:</small> ${E(r[f[0]])}</div>`:'').join('')}<div class="row np"><button class="b2" onclick="edit('${k}',${i})">تعديل</button><button class="bd" onclick="del('${k}',${i})">حذف</button></div></div>`).join('')||'<p>لا توجد سجلات بعد. اضغط «+ إضافة».</p>'}
+const mx=()=>`<div class="card"><b>مصفوفة المخاطر (الاحتمالية × الشدة)</b><table style="width:100%;text-align:center;border-collapse:collapse;margin-top:6px">`+[6,5,4,3,2,1].map(s=>`<tr><td>${s}</td>`+N5.map(l=>`<td style="background:var(--c${lv(l*s)});color:${lv(l*s)==1?'#000':'#fff'};padding:6px;border:1px solid #fff">${l*s}</td>`).join('')+'</tr>').join('')+`<tr><td></td>${N5.map(l=>`<td>${l}</td>`).join('')}</tr></table><small>الصفوف: الشدة — الأعمدة: الاحتمالية. الحدود قابلة للتعديل من الإعدادات لمطابقة مصفوفة EGPC المعتمدة لديك. المراجع: ISO 45001 §6.1، ISO 31000.</small></div>`;
+const riskX=r=>{const a=r.l0*r.s0,b=r.l1*r.s1;return bd('قبل',a)+bd('بعد',b)+`<br><b>${lv(b)<=D.cfg.acc?'✔ مقبول':'✘ غير مقبول — أضف ضوابط'}</b>`};
+const mh=r=>+r.mh||(r.w*r.hr*r.d)||0,rt=(a,b,h)=>h?(a*b/h).toFixed(2):'—';
+function stats(){const y=D.sy||new Date().getFullYear(),rs=D.stats.filter(r=>(r.m||'').startsWith(y)),sum=k=>rs.reduce((a,r)=>a+(+r[k]||0),0),H=rs.reduce((a,r)=>a+mh(r),0);
+return `<div class="card"><label>السنة</label><input type="number" value="${y}" onchange="D.sy=this.value;go()"></div><div class="grid">`+[['ساعات العمل',H],['LTIFR',rt(sum('lti'),D.cfg.b1,H)],['LTISR',rt(sum('ld'),D.cfg.b1,H)],['TRIR',rt(sum('rec'),D.cfg.b2,H)],['حوادث وشيكة',sum('nm')],['إسعافات أولية',sum('fa')],['مخالفات',sum('vio')],['أيام ضائعة',sum('ld')]].map(([a,b])=>`<div class="kpi"><b>${b}</b>${a}</div>`).join('')+`</div><div class="card"><small>LTIFR = إصابات مضيّعة × ${D.cfg.b1} ÷ ساعات العمل. LTISR = أيام ضائعة × ${D.cfg.b1} ÷ ساعات العمل. TRIR = حوادث مسجلة × ${D.cfg.b2} ÷ ساعات العمل (المرجع: OSHA 29 CFR 1904). الأساس قابل للتعديل من الإعدادات.</small></div>`+
+list('stats',r=>`<b>${E(r.m)}</b> <span class="badge" style="background:var(--g)">ساعات: ${mh(r)}</span> <span class="badge" style="background:var(--c2)">LTIFR ${rt(+r.lti||0,D.cfg.b1,mh(r))}</span> <span class="badge" style="background:var(--c3)">TRIR ${rt(+r.rec||0,D.cfg.b2,mh(r))}</span>`)}
+const TP=s=>`الأدوار والمسؤوليات:\n- قائد الطوارئ: ........\n- فريق الاستجابة: ........\n- مسؤول الإسعاف والاتصال: ........\n\nخطوات الاستجابة الفورية:\n${s}\n\nنقطة التجمع: ........\nالمعدات المطلوبة: ........\nالمرجع: ISO 45001 §8.2 — الاستعداد للطوارئ والاستجابة لها`;
+const SC={'حريق':TP('1) تفعيل الإنذار وإبلاغ غرفة التحكم\n2) عزل مصادر الطاقة والوقود إن أمكن بأمان\n3) الإطفاء الأولي بواسطة المدربين فقط\n4) إخلاء المنطقة وإحصاء الأفراد'),
+'تسرب كيميائي / غاز':TP('1) إيقاف العمل وإبلاغ غرفة التحكم\n2) الابتعاد عكس اتجاه الرياح\n3) منع مصادر الإشعال وعزل المنطقة\n4) الاستعانة بالفريق المدرّب والمجهّز فقط\n5) الرجوع إلى صحيفة بيانات السلامة (SDS)'),
+'إصابة خطيرة / سقوط':TP('1) تأمين المكان وعدم تحريك المصاب إلا للضرورة\n2) استدعاء الإسعاف وتقديم الإسعافات الأولية\n3) إبلاغ المسؤول وغرفة التحكم\n4) الحفاظ على موقع الحادث للتحقيق'),
+'انقطاع تيار / عطل معدات':TP('1) إيقاف المعدات بشكل آمن\n2) تطبيق العزل والقفل والتعليق (LOTO)\n3) إبلاغ الصيانة والمسؤول\n4) تقييم المخاطر قبل إعادة التشغيل'),
+'إخلاء':TP('1) إعلان الإخلاء بالإنذار\n2) التوجه لأقرب مخرج آمن\n3) عدم استخدام المصاعد\n4) إحصاء الأفراد في نقطة التجمع والإبلاغ عن المفقودين')};
+function emg(){const s=D.es||Object.keys(SC)[0];return `<h3>أرقام الطوارئ</h3>`+D.nums.map((x,i)=>`<div class="card row"><b>${E(x.n)}</b><a href="tel:${E(x.v)}" style="font-size:20px">${E(x.v)}</a><button class="bd np" onclick="D.nums.splice(${i},1);save();go()">حذف</button></div>`).join('')+`<div class="row np"><input id="nn" placeholder="الجهة"><input id="nv" placeholder="الرقم" type="tel"><button onclick="if($('#nn').value){D.nums.push({n:$('#nn').value,v:$('#nv').value});save();go()}">+ إضافة</button></div><h3>خطة الاستجابة (قالب عام قابل للتعديل)</h3><select class="np" onchange="D.es=this.value;go()">${Object.keys(SC).map(k=>`<option ${k==s?'selected':''}>${k}</option>`).join('')}</select><textarea rows="18" onchange="D.plans['${s}']=this.value;save()">${E(D.plans[s]??SC[s])}</textarea><small>القوالب عامة — خصّصها وفق طبيعة موقعك واعتمدها من الجهة المختصة.</small><br><button class="np" onclick="print()">طباعة / PDF</button><button class="b2 np" onclick="delete D.plans['${s}'];save();go()">استعادة القالب</button>`}
+const CH={'العمل الساخن':['تصريح العمل ساري','إزالة أو حماية المواد القابلة للاشتعال','طفاية حريق في متناول اليد','اختبار الغازات','مراقب حريق معيّن','معدات اللحام/القطع سليمة'],
+'العمل على ارتفاعات':['تصريح ساري','حزام جسم كامل ونقطة تثبيت','فحص السقالة/السلم','منع سقوط الأدوات','العاملون مدرّبون','خطة إنقاذ جاهزة'],
+'الأماكن المغلقة':['تصريح دخول ساري','عزل المصادر','اختبار الأكسجين والغازات','تهوية كافية','مراقب خارجي','خطة ومعدات إنقاذ'],
+'الكهرباء':['قفل وتعليق (LOTO)','اختبار انعدام الجهد','أدوات معزولة سليمة','تأريض سليم','معدات وقاية مناسبة'],
+'لحام وقطع':['الأسطوانات مثبتة رأسياً ومحمية','المنظمات والخراطيم سليمة بلا تسريب','مصدّات رجوع اللهب مركّبة','ماكينة اللحام والكابلات والتأريض سليمة','قناع وملابس وقفازات اللحام مناسبة','إزالة أو تغطية المواد القابلة للاشتعال','طفاية قريبة وتصريح عمل ساخن ساري','تهوية أو شفط أبخرة كافٍ'],
+'مضخات (طلمبات)':['حرّاسات الأجزاء الدوّارة مركّبة','لا تسريب من الجلبة / السيل','الضغط والاهتزاز والحرارة طبيعية','التأريض والتوصيلات الكهربائية سليمة','مستوى التشحيم مناسب','صمامات السحب والطرد سليمة','الإيقاف الطارئ والعزل (LOTO) متاحان','المكان نظيف بلا تسرب'],
+'مولد كهرباء — ديزل':['مستوى الوقود والزيت والمياه','لا تسريب وقود أو زيت','البطارية والتوصيلات','التأريض وقواطع الحماية','العادم موجَّه بأمان ومزوّد بمصدّ شرر عند اللزوم','حماية الأجزاء الساخنة والدوّارة','طفاية مناسبة ولافتات تحذير','زر الإيقاف الطارئ يعمل','تخزين وقود آمن مع حوض احتواء'],
+'مولد كهرباء — غاز':['فحص تسرب الغاز على الوصلات والخراطيم','صمام قطع الإمداد الطارئ يعمل','كاشف الغاز مركّب ومعايَر','تهوية كافية','التأريض وقواطع الحماية','لا مصادر شرر خارجية قرب المولد','طفاية مناسبة ولافتة ممنوع التدخين','الأسطوانات أو الخزان مثبتة ومحمية'],
+'عدد وأدوات يدوية وكهربائية':['الأدوات سليمة بلا تلف أو تشقق','الكابل والفيشة سليمان والعزل مناسب','استخدام قاطع تسريب أرضي (RCD)','حرّاسات أقراص الجلخ والقطع مركّبة','القرص غير متشقق ومناسب للسرعة','أدوات غير مولّدة للشرر في المناطق الخطرة عند اللزوم','فحص دوري وتعليم الأدوات','معدات وقاية المستخدم (نظارة، قفاز، سدادات)'],
+'فحص مركبة (قيادة آمنة)':['السائق لائق (راحة كافية، بلا إرهاق)','رخصة القيادة وترخيص المركبة وتصريح الدخول سارية','الإطارات والإطار الاحتياطي والعدة','الفرامل وفرامل اليد','الأضواء والإشارات والعاكسات','المساحات والمرايا والزجاج','أحزمة الأمان تعمل لكل راكب','البوق وإنذار الرجوع','الزيت والمياه والوقود وعدم وجود تسرب','طفاية وحقيبة إسعاف ومثلث عاكس','مصدّ الشرر للمناطق الخطرة عند اللزوم','الحمولة مثبتة وضمن الحد المسموح','تم إبلاغ الركاب بتعليمات السلامة وخطة الطريق'],
+'فحص عام للموقع':['النظافة والترتيب','مخارج الطوارئ خالية','طفايات صالحة','معدات الوقاية متوفرة','لافتات السلامة واضحة']};
+const VK='فحص مركبة (قيادة آمنة)';
+function chk(ks){const t=ks.includes(D.ct)?D.ct:ks[0];return `<div class="card"><select onchange="D.ct=this.value;go()">${ks.map(k=>`<option ${k==t?'selected':''}>${k}</option>`).join('')}</select>`+CH[t].map(x=>`<label style="display:block;font-size:16px;color:#000"><input type="checkbox" class="ck" style="width:24px;min-height:24px;vertical-align:middle"> ${x}</label>`).join('')+`<input id="ce" placeholder="رقم المعدة / المركبة"><input id="cd" type="date"><input id="cb" placeholder="المفتش / الموقع"><input id="cn" placeholder="ملاحظات"><button onclick="svc('${t}')">حفظ الفحص</button><br><small>قوائم عامة مبنية على الممارسات الجيدة — عدّلها وفق إجراءات شركتك ودليل EGPC.</small></div>`+D.chk.map((r,i)=>ks.includes(r.t)?`<div class="card it"><b>${E(r.t)}</b> — ${E(r.e)} — ${E(r.d)} — ${E(r.b)}<br><span class="badge" style="background:var(--c${r.p<100?3:0})">${r.p}%</span> ${r.no?'غير مستوفى: '+E(r.no)+' — عالج البنود قبل التشغيل':''} ${E(r.n)}<br><button class="bd np" onclick="del('chk',${i})">حذف</button></div>`:'').join('')}
+function svc(t){const c=[...document.querySelectorAll('.ck')].map(e=>e.checked);D.chk.push({t,e:$('#ce').value,d:$('#cd').value,b:$('#cb').value,n:$('#cn').value,p:Math.round(100*c.filter(Boolean).length/c.length),no:c.map((v,i)=>v?'':CH[t][i]).filter(Boolean).join('، ')});save();go()}
+const dl=(n,t,m)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:m}));a.download=n;a.click()};
+const exp=()=>dl('badr-backup-'+new Date().toISOString().slice(0,10)+'.json',JSON.stringify(D),'application/json');
+function imp(e){const f=e.files[0];if(f)f.text().then(t=>{try{D={...D,...JSON.parse(t)};save();go();alert('تم الاستيراد')}catch{alert('ملف غير صالح')}})}
+function csv(k){const f=M[k].f;dl(k+'.csv','\ufeff'+[f.map(x=>x[1]),...D[k].map(r=>f.map(x=>r[x[0]]??''))].map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(',')).join('\n'),'text/csv')}
+function cf(){const c=D.cfg;return `<div class="card"><h3>معدلات الإصابات</h3><label>أساس LTIFR / LTISR</label><input type="number" value="${c.b1}" onchange="D.cfg.b1=+this.value;save()"><label>أساس TRIR (OSHA = 200000)</label><input type="number" value="${c.b2}" onchange="D.cfg.b2=+this.value;save()">
+<h3>حدود مستويات الخطورة (أعلى درجة لكل مستوى)</h3><label>منخفض حتى</label><input type="number" value="${c.bands[0]}" onchange="D.cfg.bands[0]=+this.value;save()"><label>متوسط حتى</label><input type="number" value="${c.bands[1]}" onchange="D.cfg.bands[1]=+this.value;save()"><label>مرتفع حتى (ما فوقه حرج)</label><input type="number" value="${c.bands[2]}" onchange="D.cfg.bands[2]=+this.value;save()">
+<label>أعلى مستوى مقبول بعد الضوابط</label><select onchange="D.cfg.acc=+this.value;save()">${B.slice(0,3).map((x,i)=>`<option value="${i}" ${i==c.acc?'selected':''}>${x}</option>`).join('')}</select>
+<small>⚠️ القيم الافتراضية مصفوفة 6×6 عامة (الحدود 6/12/20) وليست نصاً رسمياً لمصفوفة EGPC. عدّل الحدود لتطابق الوثيقة المعتمدة لديك.</small></div>
+<div class="card"><h3>النسخ الاحتياطي</h3><button onclick="exp()">تصدير نسخة JSON</button><label>استيراد نسخة</label><input type="file" accept=".json" onchange="imp(this)"><button class="bd" onclick="if(confirm('مسح كل البيانات؟')){localStorage.removeItem('badr');location.reload()}">مسح كل البيانات</button></div>`}
+const ptwX=r=>{const o=r.st=='مفتوح',x=o&&r.to&&new Date(r.to)<new Date();return `<span class="badge" style="background:var(--c${x?3:o?1:0});color:${o&&!x?'#000':'#fff'}">${x?'منتهي المدة — يلزم الإغلاق':r.st}</span>`};
+const tripX=r=>{const km=(+r.o1-+r.o0)||0,j=r.st=='جارٍ',late=j&&r.t1&&new Date(r.t1)<new Date();return `<span class="badge" style="background:var(--c${j?(late?3:1):r.st=='مكتمل'?0:2});color:${j&&!late?'#000':'#fff'}">${late?'تأخر الوصول — تواصل مع السائق':r.st}</span>${km>0?` <span class="badge" style="background:var(--g)">${km} كم</span>`:''}`};
+let T='lib',FT='ptw',VT='trip';
+const TABS=[['lib','📚','المراجع'],['risk','⚠️','المخاطر'],['st','📊','الإحصاء'],['em','🚨','الطوارئ'],['fd','🧰','ميداني'],['veh','🚗','مركبات'],['cf','⚙️','إعدادات']];
+const FTS=[['ptw','التصاريح'],['chk','فحص المعدات'],['tbt','النشرات'],['capa','CAPA']],VTS=[['trip','الرحلات'],['vk','فحص المركبة']];
+const sub=(a,v,n)=>`<div class="row np">${a.map(([k,l])=>`<button class="${k==v?'':'b2'}" onclick="${n}='${k}';go()">${l}</button>`).join('')}</div>`;
+const veh=()=>sub(VTS,VT,'VT')+(VT=='vk'?chk([VK]):`<div class="kpi"><b>${D.trip.filter(r=>r.st=='جارٍ').length}</b>رحلات جارية الآن</div><small>المرجع: ISO 39001 ومبادئ القيادة الدفاعية. سجّل الرحلة قبل المغادرة وحدّث حالتها وعداد النهاية عند الوصول.</small>`+list('trip',tripX));
+function go(){$('nav').innerHTML=TABS.map(([k,i,n])=>`<button class="${k==T?'on':''}" onclick="T='${k}';go();scrollTo(0,0)">${i}<br>${n}</button>`).join('');
+$('main').innerHTML=({lib:()=>list('lib'),risk:()=>mx()+list('risk',riskX),st:stats,em:emg,fd:()=>sub(FTS,FT,'FT')+(FT=='chk'?chk(Object.keys(CH).filter(k=>k!=VK)):list(FT,FT=='ptw'?ptwX:null)),veh,cf})[T]()}
+go();if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script></body></html>
